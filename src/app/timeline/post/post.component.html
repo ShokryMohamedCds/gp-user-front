@@ -1,0 +1,30 @@
+<div *ngFor="let post of posts" class="row d-flex justify-content-center card-body">
+  <mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"  [ngStyle]="{ 'background-image': 'url(' + post.postimage + ')'}"></div>
+      <mat-card-title>{{post.creatorname}}</mat-card-title>
+      <mat-card-subtitle>{{post.date}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>
+        {{post.postsubject}}
+      </p>
+    </mat-card-content>
+    <img mat-card-image [src]="post.postimage" [alt]="post.postsubject">
+
+    <mat-card-actions>
+      <button (click)="toggleClass(post)" [class.change-color]="post.isliked" mat-button><i [class.change-color]="post.isliked" class="material-icons">recommend</i> Like</button>
+      <button  (click)="toggleComment(post)" mat-button><i class="material-icons">comment</i> Comment</button>
+    </mat-card-actions>
+    <section  [hidden]="!post.showcomment">
+      <div *ngIf="post.comments" class="container text-dark">
+        <div  class="row d-flex ">
+          <app-comments  [comment]="[post.comments[0]]"></app-comments>
+          <app-comment-form></app-comment-form>
+          <button (click)="openDialog(post)" class="text-center" mat-button><h4>load more comments</h4></button>
+        </div>
+      </div>
+    </section>
+  </mat-card>
+</div>
+

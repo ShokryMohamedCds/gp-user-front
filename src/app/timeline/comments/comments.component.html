@@ -1,0 +1,18 @@
+<div *ngIf="comment" class="" class="">
+  <div *ngFor="let com of comment" class="mb-4">
+    <div class="card">
+      <div class="card-body ">
+        <div class="">
+          <img class="rounded-circle shadow-1-strong me-3"
+      [src]="com.creatorimage" alt="avatar" width="40"
+      height="40" />
+          <p style="font-weight: bold;">{{ com.creatorname }}</p>
+          <p class="small">{{com.date}}</p>
+          <p>
+            {{com.commentsubject}}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

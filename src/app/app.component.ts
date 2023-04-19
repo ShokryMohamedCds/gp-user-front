@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from './services/auth.service';
+import { user } from './models/user';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +10,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Gp';
+
+  constructor(public router: Router,private auth:AuthService) { }
+
+  ngOnInit() {
+  }
+
+
 }
