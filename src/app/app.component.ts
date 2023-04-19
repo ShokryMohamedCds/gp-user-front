@@ -14,6 +14,8 @@ export class AppComponent {
   constructor(public router: Router,private auth:AuthService) { }
 
   ngOnInit() {
+    console.log('xd');
+
   }
 
 
