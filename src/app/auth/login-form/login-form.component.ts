@@ -38,7 +38,7 @@ export class LoginFormComponent implements OnInit {
             this.router.navigate(['/home']);
           },
           error => {
-            console.error(error);
+            alert('the Email or Password is not Correct')
             // Handle authentication error
           }
         );

@@ -1,8 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { TimelineRoutingModule } from './timeline-routing.module';
-import { TimelineComponent } from './timeline.component';
+import { CompanyRoutingModule } from './company-routing.module';
+import { CompanyComponent } from './company.component';
+import { AllcommentsComponent } from './allcomments/allcomments.component';
+import { PostComponent } from './post/post.component';
+import { CommentFormComponent } from './comment-form/comment-form.component';
+import { CommentsComponent } from './comments/comments.component';
+
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -11,22 +16,18 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { MatIconModule } from '@angular/material/icon';
-import { AllcommentsComponent } from './allcomments/allcomments.component';
-import { PostComponent } from './post/post.component';
-import { CommentFormComponent } from './comment-form/comment-form.component';
-import { CommentsComponent } from './comments/comments.component';
 
 @NgModule({
   declarations: [
-    TimelineComponent,
+    CompanyComponent,
     PostComponent,
-    CommentsComponent,
     AllcommentsComponent,
     CommentFormComponent,
+    CommentsComponent,
   ],
   imports: [
     CommonModule,
-    TimelineRoutingModule,
+    CompanyRoutingModule,
     MatCardModule,
     MatButtonModule,
     MatFormFieldModule,
@@ -46,4 +47,4 @@ import { CommentsComponent } from './comments/comments.component';
     MatIconModule,
   ],
 })
-export class TimelineModule {}
+export class CompanyModule {}

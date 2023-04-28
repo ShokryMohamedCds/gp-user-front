@@ -27,4 +27,16 @@ export class UserService {
     const url = `${this.apiUrl}/user/info`;
     return this.http.get(url, this.httpOptions);
   }
+  public updateProfile(profileData: any): void {
+    console.log(profileData);
+    
+    this.http.post('http://localhost:8000/user/edit', profileData, this.httpOptions).subscribe(
+      response => {
+        console.log(response); // handle the response from the backend
+      },
+      error => {
+        console.error(error); // handle errors
+      }
+    );
+  }
 }

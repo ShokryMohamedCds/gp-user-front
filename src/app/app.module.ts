@@ -15,15 +15,10 @@ import { MatInputModule } from '@angular/material/input';
 import { DatePipe } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { NavbarComponent } from './layout/navbar/navbar.component';
-
-
-
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    NavbarComponent,
-  ],
+  declarations: [AppComponent, NavbarComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -38,17 +33,20 @@ import { NavbarComponent } from './layout/navbar/navbar.component';
     MatInputModule,
     HttpClientModule,
     DatePipe,
+    MatAutocompleteModule,
+    RouterModule,
   ],
-  exports:[
+  exports: [
     MatToolbarModule,
     MatSidenavModule,
     MatIconModule,
     MatListModule,
     MatButtonModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatAutocompleteModule,
   ],
   providers: [DatePipe],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

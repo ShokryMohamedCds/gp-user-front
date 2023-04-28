@@ -15,7 +15,6 @@ yearsOfExperience:number;
 skills: {
   SkillName: string;
   yearsOfExperience: number;
-  _id: number;
 }[];
 currentCareerlevel:string;
 jopType:string;
