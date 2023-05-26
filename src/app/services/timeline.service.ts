@@ -17,11 +17,11 @@ export class TimelineService {
   }
 
   public getPosts(start: number): Observable<any> {
-    const url = 'http://localhost:8000/user/post';
+    const url = 'http://localhost:8042/user/post';
     return this.http.post(url, { start: start }, this.httpOptions);
   }
   public getMorePosts(start: number, lastPostSeen: string): Observable<any> {
-    const url = 'http://localhost:8000/user/post';
+    const url = 'http://localhost:8042/user/post';
     return this.http.post(
       url,
       { start: start, lastPostSeen: lastPostSeen },
@@ -29,15 +29,15 @@ export class TimelineService {
     );
   }
   public like(id: string): Observable<any> {
-    const url = `http://localhost:8000/user/reaction/${id}`;
+    const url = `http://localhost:8042/user/reaction/${id}`;
     return this.http.post(url, '', this.httpOptions);
   }
   public comment(id: string, comment: string): Observable<any> {
-    const url = `http://localhost:8000/user/comment/${id}`;
+    const url = `http://localhost:8042/user/comment/${id}`;
     return this.http.post(url, { comment: comment }, this.httpOptions);
   }
   public getCompanyPosts(start: number, id: String): Observable<any> {
-    const url = `http://localhost:8000/user/companyPosts/${id}`;
+    const url = `http://localhost:8042/user/companyPosts/${id}`;
     return this.http.post(url, { start: start }, this.httpOptions);
   }
   public getMoreCompanyPosts(
@@ -45,7 +45,7 @@ export class TimelineService {
     lastPostSeen: string,
     id: any
   ): Observable<any> {
-    const url = `http://localhost:8000/user/companyPosts/${id}`;
+    const url = `http://localhost:8042/user/companyPosts/${id}`;
     return this.http.post(
       url,
       { start: start, lastPostSeen: lastPostSeen },

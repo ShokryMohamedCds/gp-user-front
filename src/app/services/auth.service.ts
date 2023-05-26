@@ -4,31 +4,33 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { user } from '../models/user';
 
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:8000/user/login';
-  private userDataSubject = new BehaviorSubject<user>({ id: '', name: '', email: '', token: '' });
+  private apiUrl = 'http://localhost:8042/user/login';
+  private userDataSubject = new BehaviorSubject<user>({
+    id: '',
+    name: '',
+    email: '',
+    token: '',
+  });
   public userData$ = this.userDataSubject.asObservable();
   private loggedInSubject = new BehaviorSubject<boolean>(false);
   public loggedIn$ = this.loggedInSubject.asObservable();
 
-   userData :user = {
-     id: '',
-     name: '',
-     email: '',
-     token: ''
-   }
-   headers: HttpHeaders = new HttpHeaders({
+  userData: user = {
+    id: '',
+    name: '',
+    email: '',
+    token: '',
+  };
+  headers: HttpHeaders = new HttpHeaders({
     'Content-Type': 'application/json',
-    Authorization: `Bearer ${this.userData.token}`
+    Authorization: `Bearer ${this.userData.token}`,
   });
 
   httpOptions = { headers: this.headers };
-
-
 
   constructor(private http: HttpClient) {
     const userData = JSON.parse(localStorage.getItem('userData') || '{}');
@@ -51,7 +53,7 @@ export class AuthService {
         console.log(JSON.parse(localStorage.getItem('userData') || '{}'));
         this.userDataSubject.next(userData);
         this.loggedInSubject.next(true);
-        this.userData = response.userObject
+        this.userData = response.userObject;
         return userData;
       })
     );

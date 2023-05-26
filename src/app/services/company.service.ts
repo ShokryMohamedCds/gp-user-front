@@ -16,15 +16,15 @@ export class CompanyService {
     return { headers };
   }
   public search(searchquery: string): Observable<any> {
-    const url = `http://localhost:8000/user/search`;
+    const url = `http://localhost:8042/user/search`;
     return this.http.post(url, { search: searchquery });
   }
   public getCompany(id: string): Observable<any> {
-    const url = `http://localhost:8000/company/company/${id}`;
+    const url = `http://localhost:8042/company/company/${id}`;
     return this.http.get(url, this.httpOptions);
   }
   public follow(id: string): Observable<any> {
-    const url = `http://localhost:8000/user/follow/${id}`;
+    const url = `http://localhost:8042/user/follow/${id}`;
     console.log(this.httpOptions);
 
     return this.http.post(url, '', this.httpOptions);

@@ -81,9 +81,13 @@ export class CompanyComponent implements OnInit {
       this.timeline
         .getMoreCompanyPosts(this.start, date, this.companyId)
         .subscribe((res) => {
-          this.posts.push(...res.data);
-          console.log(this.posts);
-          this.isLoading = false;
+          console.log(res);
+
+          if (res.length) {
+            this.posts.push(...res);
+            console.log(this.posts);
+            this.isLoading = false;
+          }
         });
     }
   };

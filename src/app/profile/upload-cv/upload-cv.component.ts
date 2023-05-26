@@ -33,7 +33,7 @@ export class UploadCvComponent {
     formData.append('userCV', this.selectedFile);
 
     this.http
-      .post('http://localhost:8000/user/userCV', formData, this.httpOptions)
+      .post('http://localhost:8042/user/userCV', formData, this.httpOptions)
       .subscribe(
         (response) => {
           alert('Cv Uploaded Seccussfully');
