@@ -22,6 +22,7 @@ export class TimelineComponent implements OnInit {
       post.showcomment = false;
     });
     window.addEventListener('scroll', this.scrollHandler, true);
+    console.log(this.posts[0]);
   }
   scrollHandler = (): void => {
     const windowHeight =
@@ -62,6 +63,7 @@ export class TimelineComponent implements OnInit {
     this.timeline.getPosts(this.start).subscribe((res) => {
       this.posts.push(...res.data);
       console.log(this.posts);
+      console.log(this.posts[0]);
     });
   }
 

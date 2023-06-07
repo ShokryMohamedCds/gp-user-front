@@ -47,12 +47,14 @@ export class CompanyComponent implements OnInit {
     this.route.params.subscribe((params) => {
       this.companyId = params['id'];
       this.currentCompanyId.next(this.companyId);
+      this.loadCompanyData();
+      this.posts = [];
+      this.getCompanyPosts(this.companyId);
+      this.posts.forEach((post) => {
+        post.showcomment = false;
+      });
     });
-    this.loadCompanyData();
-    this.getCompanyPosts(this.companyId);
-    this.posts.forEach((post) => {
-      post.showcomment = false;
-    });
+
     window.addEventListener('scroll', this.scrollHandler, true);
   }
   scrollHandler = (): void => {
@@ -81,8 +83,6 @@ export class CompanyComponent implements OnInit {
       this.timeline
         .getMoreCompanyPosts(this.start, date, this.companyId)
         .subscribe((res) => {
-          console.log(res);
-
           if (res.length) {
             this.posts.push(...res);
             console.log(this.posts);
@@ -115,6 +115,7 @@ export class CompanyComponent implements OnInit {
         this.company.getCompany(companyId).subscribe(
           (results: any) => {
             this.companyData = results.data;
+            console.log(this.companyData);
           },
           (error: any) => {
             console.log('Error occurred while searching for companies:', error);

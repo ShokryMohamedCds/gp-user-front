@@ -1,4 +1,12 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { TimelineService } from 'src/app/services/timeline.service';
 
@@ -11,14 +19,19 @@ export class CommentFormComponent implements OnInit {
   @Input() post: any;
   @Output() commentAdded = new EventEmitter<any>();
 
+  @ViewChild('commentTextArea') commentTextArea!: ElementRef;
+
   constructor(
     private formBuilder: FormBuilder,
     private timeline: TimelineService
   ) {}
+
   ngOnInit(): void {}
+
   checkoutForm = this.formBuilder.group({
     Comment: '',
   });
+
   onSubmit(): void {
     if (this.checkoutForm.valid) {
       const comment = this.checkoutForm.get('Comment')?.value;
@@ -26,6 +39,15 @@ export class CommentFormComponent implements OnInit {
       this.addComment(comment);
       console.warn('Your order has been submitted', comment);
       this.checkoutForm.reset();
+      this.clearCommentTextArea();
+    }
+  }
+
+  clearCommentTextArea(): void {
+    const nativeElement: HTMLTextAreaElement | null =
+      this.commentTextArea.nativeElement;
+    if (nativeElement) {
+      nativeElement.value = '';
     }
   }
 
