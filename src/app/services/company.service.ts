@@ -29,4 +29,32 @@ export class CompanyService {
 
     return this.http.post(url, '', this.httpOptions);
   }
+  public getJobOffers(): Observable<any> {
+    const url = `http://localhost:8042/user/recieveJobOffers`;
+    return this.http.get(url, this.httpOptions);
+  }
+  public Accept(offer: any): Observable<any> {
+    const url = `http://localhost:8042/user/setOfferState/${offer._id}`;
+    console.log(this.httpOptions);
+
+    return this.http.put(
+      url,
+      {
+        offeracceptanc: 'Accepted',
+      },
+      this.httpOptions
+    );
+  }
+  public Reject(offer: any): Observable<any> {
+    const url = `http://localhost:8042/user/setOfferState/${offer._id}`;
+    console.log(this.httpOptions);
+
+    return this.http.put(
+      url,
+      {
+        offeracceptanc: 'Rejected',
+      },
+      this.httpOptions
+    );
+  }
 }

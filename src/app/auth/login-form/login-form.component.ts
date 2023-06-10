@@ -3,26 +3,28 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
-
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login-form',
   templateUrl: './login-form.component.html',
-  styleUrls: ['./login-form.component.css']
-
+  styleUrls: ['./login-form.component.css'],
 })
 export class LoginFormComponent implements OnInit {
-
   loginForm!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private http: HttpClient,private router: Router,private auth:AuthService) { }
-  userData:object = {
-  }
+  constructor(
+    private formBuilder: FormBuilder,
+    private http: HttpClient,
+    private router: Router,
+    private auth: AuthService
+  ) {}
+  userData: object = {};
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required]]
+      password: ['', [Validators.required]],
     });
   }
 
@@ -31,19 +33,20 @@ export class LoginFormComponent implements OnInit {
       const email = this.loginForm.value.email;
       const password = this.loginForm.value.password;
 
-      this.auth.login(email, password)
-        .subscribe(
-          userData => {
-            // Redirect the user to the home page
-            this.router.navigate(['/home']);
-          },
-          error => {
-            alert('the Email or Password is not Correct')
-            // Handle authentication error
-          }
-        );
+      this.auth.login(email, password).subscribe(
+        (userData) => {
+          // Redirect the user to the home page
+          this.router.navigate(['/home']);
+        },
+        (error) => {
+          // Handle authentication error
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'make sure to use correct email and password!',
+          });
+        }
+      );
     }
   }
-
-
 }

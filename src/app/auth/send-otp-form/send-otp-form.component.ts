@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-send-otp-form',
@@ -42,10 +43,15 @@ export class SendOtpFormComponent implements OnInit {
       // success callback
       (response) => {
         this.router.navigate(['auth/login']);
+        Swal.fire('Good job!', 'You Are Now Verified!', 'success');
       },
       // error callback
       (error) => {
-        alert(error.error.message);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Something went wrong while verfying your account!',
+        });
       }
     );
   }

@@ -18,6 +18,41 @@ export interface jobTitle {
 export class ProfileComponent implements OnInit {
   [key: string]: any;
   skills: { SkillName: string; yearsOfExperience: number }[] = [];
+  industries: string[] = [
+    'Management',
+    'Marketing and Advertising',
+    'Sales',
+    'Customer Service',
+    'Human Resources',
+    'Accounting and Finance',
+    'Information Technology',
+    'Engineering',
+    'Operations and Logistics',
+    'Research and Development',
+    'Legal and Regulatory Affairs',
+    'Health and Safety',
+    'Quality Control and Assurance',
+    'Supply Chain Management',
+    'Project Management',
+    'Product Development',
+    'Consulting',
+    'Education and Training',
+    'Administration and Support',
+    'Media and Communications',
+    'Agriculture and Farming',
+    'Mining and Extraction',
+    'Construction',
+    'Transportation and Logistics',
+    'Energy and Utilities',
+    'Financial Services',
+    'Healthcare and Pharmaceuticals',
+    'Hospitality and Tourism',
+    'Retail and Wholesale',
+    'Real Estate',
+    'Media and Entertainment',
+    'Government and Public Services',
+    'other',
+  ];
 
   profileData: Profile = {
     name: '',

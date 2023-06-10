@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-registration-form',
@@ -49,10 +50,17 @@ export class RegistrationFormComponent implements OnInit {
     this.http.post('http://localhost:8042/user/register', body).subscribe(
       (response) => {
         console.log(response);
-
+        Swal.fire('Good job!', 'You Registred Successfully!', 'success');
         this.router.navigate(['auth/sendotp', body.email]);
       },
-      (error) => console.log(error)
+      (error) => {
+        console.log(error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Something went wrong while creating your account!',
+        });
+      }
     );
   }
 }
