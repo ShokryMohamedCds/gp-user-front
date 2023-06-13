@@ -240,13 +240,14 @@
                   #chipList
                   aria-label="Fruit selection"
                 >
+                
                   <mat-chip
                     *ngFor="let fruit of JobTitles"
                     [selectable]="selectable"
                     [removable]="removable"
                     (removed)="remove(fruit)"
                   >
-                    {{ fruit.name.name }}
+                    {{ fruit.name }}
                     <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
                   </mat-chip>
                   <input
