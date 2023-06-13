@@ -243,7 +243,7 @@ export class ProfileComponent implements OnInit {
       this.selectedEducationalLevel = this.profileData.currentEducationalLevel;
       this.skills = this.profileData.skills;
       for (let i = 0; i < this.profileData.jobTitles.length; i++) {
-        this.JobTitles.push(  this.profileData.jobTitles[i] );
+        this.JobTitles.push(this.profileData.jobTitles[i]);
       }
       console.log(this.JobTitles[0].name);
 
